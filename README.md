@@ -1,46 +1,75 @@
-# 🧪 Análise de Crescimento Microbiano
+# 🧪 Micro Growth
 
-<p align="center">
-  <img src="https://i.ibb.co/27dQM4bX/Sem-t-tulo.png" alt="Preview" width="600"/>
-</p>
+Pequeno utilitário desenvolvido para análise de curvas de crescimento microbiano da cadeira de Microbiologia Aplicada.
+Escolha das fases, regressão linear simples por mínimos quadrados (caso particular de aplicação de Monod), comparação estatística com Gompertz, Logístico e Richards.
+Sílvio do Ó - 2025
 
+Open-source ( GPL-3.0 license )
+Ainda muito um W.I.P. Quem quiser pegar e expandir, força!
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-GNU_V3.0-green.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow.svg)]()
 
-## 📌 Descrição
-Ferramenta modular para análise de curvas de crescimento microbiano com segmentação automática ou manual das fases **Lag**, **Exponencial**, **Estacionária** e **Declínio**. Inclui regressão linear, ajustes paramétricos (Gompertz, Logístico, Richards) e exportação para Excel.
 
-## 🚀 Funcionalidades
+TODO:
+- Painel de introdução directa de dados experimentais e leitura de folhas de cálculo (para não ser só csv)
+- Opção de computação da equação de Monod e exponencial de crescimento (Nt = N0 x 2^n) se os dados o permitirem.
+- Mais parâmetros de cinética calculáveis...
+- Settings visuais (cores dos gráficos, ticks, grids, etc e tal...)
+
+## Estrutura
+---------
+```text
+micro_growth/
+├─ main.py                 # GUI PyQt5 (abre CSV, ajusta spans com snap, exporta)
+├─ io_data.py              # Leitura CSV + meta + μ_ref CSV + thresholds por coluna
+├─ phases.py               # μ(t), segmentação automática, regressão na exponencial
+├─ fits.py                 # Ajustes Gompertz/Logístico/Richards (SciPy opcional)
+├─ export.py               # Gráficos, Excel (3 folhas), CSV, metadados; figuras combinadas
+├─ config/
+│   └─ medium_aliases.py   # Dicionário com lista de aliases extensa para meios de cultura
+└─ data/
+    ├─ growth_refs.py      # Algumas referências de crescimentos típicos com base na literatura
+    └─ growth_data.py      # Exemplo de csv com dados experimentais de crescimento de *E. coli* em Luria-Bertani
+```
+
+
+## Funcionalidades
 - Leitura de dados em formato CSV (tempo vs absorbância)
 - Segmentação automática das fases com base em derivadas e histerese
-- Interface gráfica interativa (Tkinter ou PyQt5)
-- Ajustes empíricos com SciPy (opcional)
+- Interface gráfica interativa
+- Ajustes a modelos Gompertz/Logístico/Richards para confirmar pontos da fase exp 
 - Exportação de resultados para Excel e gráficos por curva
 
-## 📦 Requisitos
+## Requisitos
 ```bash
 pip install numpy pandas matplotlib scipy pyqt5
 ```
 
-## 🖥️ Como usar
-1. Coloque os dados em `data/growth_data.csv`
-2. Execute:
+## Como usar
+1. Colocar os dados num csv`
+2. Executar:
 ```bash
 python gui.py
 ```
-3. Selecione as fases manualmente ou aceite as sugestões automáticas
+3. Abrir csv
+4. Selecionar as fases manualmente ou aceitar as sugestões automáticas
 
-## 📂 Estrutura do projeto
+## Estrutura do projecto
 ```
-├── gui.py                # Interface Tkinter para seleção de fases
-├── novo_gui.py           # Interface PyQt5 alternativa
-├── AnaliseCurvasCrescimento.py # Lógica principal de análise
-├── data/                 # Dados de entrada
-├── outputs/              # Resultados e gráficos
-└── README.md
+micro_growth/
+  ├─ main.py                	# GUI PyQt5 (abre CSV, ajusta spans com snap, exporta)
+  ├─ io_data.py            		# Leitura CSV + meta + μ_ref CSV + thresholds por coluna
+  ├─ phases.py             		# μ(t), segmentação automática, regressão na exponencial
+  ├─ fits.py               		# Ajustes Gompertz/Logístico/Richards (SciPy opcional)
+  ├─ export.py             		# Gráficos, Excel (3 folhas), CSV, metadados; figuras combinadas
+  └─ config/
+       └─ medium_aliases.py		# Dicionário com lista de aliases extensa para meios de cultura
+  └─ data/
+       └─ growth_refs.py		  # Algumas referências de crescimentos típicos com base na literatura
+       └─ growth_data.py		  # Exemplo de csv com dados experimentais de crescimento de Escherichia coli em Luria-Bertani
 ```
 
-## 📜 Licença
-Este projeto está licenciado sob os termos da licença MIT.
+## Licença
+Este projeto está licenciado sob os termos da licença GNU General Public License v3.0 .
