@@ -1,57 +1,45 @@
+# 🧪 Análise de Crescimento Microbiano
 
-Micro Growth
-=========================================
-Pequeno utilitário desenvolvido para análise de curvas de crescimento microbiano da cadeira de Microbiologia Aplicada.
-Escolha das fases, regressão linear simples por mínimos quadrados (caso particular de aplicação de Monod), comparação estatística com Gompertz, Logístico e Richards.
-Sílvio do Ó - 2025
-=========================================
-Open-source ( GPL-3.0 license )
-Ainda muito um W.I.P. Quem quiser pegar e expandir, força!
-=========================================
-TODO:
-- Painel de introdução directa de dados experimentais e leitura de folhas de cálculo (para não ser só csv)
-- Opção de computação da equação de Monod e exponencial de crescimento (Nt = N0 x 2^n) se os dados o permitirem.
-- Mais parâmetros de cinética calculáveis...
-- Settings visuais (cores dos gráficos, ticks, grids, etc e tal...)
-=========================================
+<p align="center">
+  <img src="image.png" alt="Logo" width="420"/>
+</p>
 
-Estrutura
----------
-micro_growth/
-  ├─ gui.py                		# GUI PyQt5 (abre CSV, ajusta spans com snap, exporta)
-  ├─ io_data.py            		# Leitura CSV + meta + μ_ref CSV + thresholds por coluna
-  ├─ phases.py             		# μ(t), segmentação automática, regressão na exponencial
-  ├─ fits.py               		# Ajustes Gompertz/Logístico/Richards (SciPy opcional)
-  ├─ export.py             		# Gráficos, Excel (3 folhas), CSV, metadados; figuras combinadas
-  └─ config/
-       └─ medium_aliases.py		# Dicionário com lista de aliases extensa para meios de cultura
-  └─ data/
-       └─ growth_refs.py		# Algumas referências de crescimentos típicos com base na literatura
-       └─ growth_data.py		# Exemplo de csv com dados experimentais de crescimento de Escherichia coli em Luria-Bertani
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow.svg)]()
 
+## 📌 Descrição
+Ferramenta modular para análise de curvas de crescimento microbiano com segmentação automática ou manual das fases **Lag**, **Exponencial**, **Estacionária** e **Declínio**. Inclui regressão linear, ajustes paramétricos (Gompertz, Logístico, Richards) e exportação para Excel.
 
-Funcionalidades principais
------------------
-- Painel **Settings** na GUI para editar espécie/estirpe/meio/temperatura,
-  factores de fase, μ_ref manual/CSV, e *tunables* (R² alvo, janela de suavização, etc.).
-- **Snap-to-point** ao selecionar intervalos (SpanSelector encaixa no ponto experimental mais próximo).
-- **Linearização** com **tabela de resultados** (R², μ, t_d, etc.).
-- **Figura combinada** por coluna: **μ(t) suavizado** (topo) + **modelos empíricos**
-  (meio) + **tabela** com R² e **desvio relativo** face ao R² da regressão linear (base).
-  Desvio relativo = (R²_modelo − R²_linear) / R²_linear.
+## 🚀 Funcionalidades
+- Leitura de dados em formato CSV (tempo vs absorbância)
+- Segmentação automática das fases com base em derivadas e histerese
+- Interface gráfica interativa (Tkinter ou PyQt5)
+- Ajustes empíricos com SciPy (opcional)
+- Exportação de resultados para Excel e gráficos por curva
 
-Como usar
----------
-1) Instalar dependências:
-   pip install PyQt5 matplotlib numpy pandas xlsxwriter scipy
+## 📦 Requisitos
+```bash
+pip install numpy pandas matplotlib scipy pyqt5
+```
 
-2) Correr:
-   python main.py
+## 🖥️ Como usar
+1. Coloque os dados em `data/growth_data.csv`
+2. Execute:
+```bash
+python gui.py
+```
+3. Selecione as fases manualmente ou aceite as sugestões automáticas
 
-3) Abrir CSV (wide; 1ª coluna = tempo [min]). Pode incluir linhas "Meta_Medium" e "Meta_Temp".
+## 📂 Estrutura do projeto
+```
+├── gui.py                # Interface Tkinter para seleção de fases
+├── novo_gui.py           # Interface PyQt5 alternativa
+├── AnaliseCurvasCrescimento.py # Lógica principal de análise
+├── data/                 # Dados de entrada
+├── outputs/              # Resultados e gráficos
+└── README.md
+```
 
-4) Ajustar spans por coluna (teclas 1–4 para escolher fase). O arrasto "agarra" ao ponto real.
-
-5) Exportar: outputs/<timestamp>/ com PNGs, Excel, CSV de janelas e metadados.
-
-
+## 📜 Licença
+Este projeto está licenciado sob os termos da licença MIT.
