@@ -1,0 +1,6 @@
+species,strain,medium,mu_ref_h_inv,source
+Escherichia coli,MG1655,LB,0.72,Neidhardt 1996
+Escherichia coli,,M9,0.40,Monod-like
+Bacillus subtilis,168,LB,0.55,Kunst 1997
+Pseudomonas aeruginosa,PAO1,M9,0.30,Shih 2019
+Saccharomyces cerevisiae,S288C,YPD,0.45,Verduyn 1992
