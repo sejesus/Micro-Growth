@@ -1,11 +1,12 @@
 # 🧪 Análise de Crescimento Microbiano
 
 <p align="center">
-  <img src="image.png" alt="Logo" width="420"/>
+  <img src="https://i.ibb.co/27dQM4bX/Sem-t-tulo.png" alt="Preview" width="600"/>
 </p>
 
+
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-GNU_V3.0-green.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow.svg)]()
 
 ## 📌 Descrição
