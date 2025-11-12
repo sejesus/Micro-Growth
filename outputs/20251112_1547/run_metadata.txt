@@ -1,0 +1,6 @@
+Run timestamp: 20251112_1547
+Species: Escherichia coli  Strain: 
+Global medium default: LB
+Global temperature default: 37.0 °C
+Data file: C:\Users\269068\iCloudDrive\ISEL\Microbiologia\trab02\Micro Growth\data\growth_data.csv
+μ_ref CSV: n/d
