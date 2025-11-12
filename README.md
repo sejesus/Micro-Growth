@@ -36,7 +36,7 @@ micro_growth/
 
 
 ## Funcionalidades
-- Leitura de dados em formato CSV (tempo vs absorbância)
+- Leitura de dados em formato CSV
 - Segmentação automática das fases com base em derivadas e histerese
 - Interface gráfica interativa
 - Ajustes a modelos Gompertz/Logístico/Richards para confirmar pontos da fase exp 
